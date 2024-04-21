@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "RedirectServlet", urlPatterns = {"/mainpage", "/categories", "/aboutus", "/feedback","/faq"})
+@WebServlet(name = "RedirectServlet", urlPatterns = {"/mainpage", "/categories", "/aboutus", "/feedback","/faq", "/book"})
 public class RedirectServlet extends HttpServlet {
     
     private static final Map<String, String> PAGE_MAPPING = new HashMap<>();
@@ -20,6 +20,7 @@ public class RedirectServlet extends HttpServlet {
         PAGE_MAPPING.put("/aboutus", "/AboutUs.jsp");
         PAGE_MAPPING.put("/feedback", "/Feedback.jsp");
         PAGE_MAPPING.put("/faq", "/FAQ.jsp");
+        PAGE_MAPPING.put("/book", "/BookPage.jsp");
     }
     
     @Override

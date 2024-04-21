@@ -64,7 +64,7 @@
                             вседневностью содержания, но и огромной психологической разработкой души человеческой,
                             страшной глубиной и силой». Уже к началу 1900-х годов роман Толстого был переведен на многие
                             языки мира, а в настоящее время входит в золотой фонд мировой литературы.</p>
-                        <a href="#" class="btn btn-primary d-inline-block mx-auto">Подробнее</a>
+                        <a href="#" class="btn btn-primary d-inline-block mx-auto" onclick="showBookDetails('2459099')" data-id="2459099">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                             Эту притчу стоит читать и перечитывать не из-за сюжета и в поиске новых знаний, а из-за того
                             глубинного понимания мира, ощущения единения с окружающими, которое она дает.
                             В издание также включена аллегорическая повесть «Путешествие в страну Востока».</p>
-                        <a href="#" class="btn btn-primary d-inline-block mx-auto">Подробнее</a>
+                        <a href="#" class="btn btn-primary d-inline-block mx-auto" onclick="showBookDetails('2477326')" data-id="2477326">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                             пренебрегая другими людьми, исповедуя правило «все средства хороши». Привыкший добиваться
                             своего, он действует по одной схеме в политике, финансах и любви, и ничто, казалось бы, не в
                             силах его остановить.</p>
-                        <a href="#" class="btn btn-primary d-inline-block mx-auto">Подробнее</a>
+                        <a href="#" class="btn btn-primary d-inline-block mx-auto" onclick="showBookDetails('7379135')" data-id="7379135">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
                             погребенные», «Сердце-обличитель» и другие рассказы, представленные в настоящем сборнике,
                             являются ярчайшими образцами «малоформатной» прозы По, в которой писатель обнаружил
                             блистательное мастерство и достиг вершины художественного совершенства.</p>
-                        <a href="#" class="btn btn-primary d-inline-block mx-auto">Подробнее</a>
+                        <a href="#" class="btn btn-primary d-inline-block mx-auto" onclick="showBookDetails('2141859')" data-id="2141859">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                             тайн человеческой души соседствуют в этом романе с лиризмом и увлекательным, интригующим
                             сюжетом, в котором главный персонаж — князь Валковский — развивает свою аморальную,
                             эгоистическую «философию жизни».</p>
-                        <a href="#" class="btn btn-primary d-inline-block mx-auto">Подробнее</a>
+                        <a href="#" class="btn btn-primary d-inline-block mx-auto" onclick="showBookDetails('7145798')" data-id="7145798">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -160,7 +160,7 @@
                             – война обнажает чувства, именно в такое кровавое время, когда стираются границы
                             дозволенного, яснее становится, кто смог сохранить достоинство и остаться Человеком, а кто
                             нет.</p>
-                        <a href="#" class="btn btn-primary d-inline-block mx-auto">Подробнее</a>
+                        <a href="#" class="btn btn-primary d-inline-block mx-auto" onclick="showBookDetails('2523432')" data-id="2523432">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -184,7 +184,7 @@
                             непростой путь взросления. А уже став взрослыми девушками, сталкиваются с новыми заботами.
                             Живо и увлекательно описывая их судьбу, Олкотт снова вселяет веру в людей и человеческие
                             чувства.</p>
-                        <a href="#" class="btn btn-primary d-inline-block mx-auto">Подробнее</a>
+                        <a href="#" class="btn btn-primary d-inline-block mx-auto" onclick="showBookDetails('2777151')" data-id="2777151">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -203,7 +203,7 @@
                             завяжется действие романа, уместившееся в один пятничный вечер. По роману "Аэропорт" в 1970
                             году был снят фильм с ведущими голливудскими актерами - десять номинаций на премию "Оскар"!
                             После этой экранизации вышли еще три сиквела.</p>
-                        <a href="#" class="btn btn-primary d-inline-block mx-auto">Подробнее</a>
+                        <a href="#" class="btn btn-primary d-inline-block mx-auto" onclick="showBookDetails('2426506')" data-id="2426506">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -242,6 +242,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/script.js" type="text/javascript"></script>
+    <script src="js/fetchJSONdata.js" type="text/javascript"></script>
 
 </body>
 
