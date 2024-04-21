@@ -12,6 +12,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+document.getElementById('saveBooksBtn').addEventListener('click', function() {
+    fetch('books.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка загрузки данных');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const books = data; // Записываем данные в массив books
+            console.log('Загруженные книги:', books);
+
+            // Здесь вы можете вызвать функцию для сохранения данных на сервере
+            saveBooks(books);
+        })
+        .catch(error => {
+            console.error('Произошла ошибка:', error);
+        });
+});
+
 function loadBooks() {
     console.log("Loading books...");
     return fetch('/OOP-Website-1.0-SNAPSHOT/books.json')
@@ -23,9 +43,15 @@ function loadBooks() {
 
 function showBookDetails(bookId) {
     loadBooks().then(data => {
+        
+        if (!data || data.length === 0) {
+            console.error('Книги не загружены или список книг пуст');
+            return;
+        }
+
         const book = data.find(book => book.id === bookId);
         
-        if (book) {
+        if (book) { 
             const container = document.querySelector('.container');
             container.innerHTML = `
                 <div class="row">
@@ -54,4 +80,18 @@ function showBookDetails(bookId) {
         }
     });
 }
+
+function saveBooks(data) {
+    fetch('saveBooks', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.text())
+        .then(message => console.log(message))
+        .catch(error => console.error('Error saving data:', error));
+}
+
 

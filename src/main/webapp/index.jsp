@@ -210,6 +210,13 @@
         </div>
     </section>
 
+    <button id="saveBooksBtn" class="btn btn-primary">Сохранить книги</button>
+
+    <div style="height: 30px;"></div>
+
+    <button id="showBooksBtn" class="btn btn-primary">Показать сохраненные книги</button>
+
+    <div style="height: 30px;"></div>
 
     <footer class="bg-dark text-light py-4">
         <div class="container text-center">
