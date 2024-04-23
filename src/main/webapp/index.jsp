@@ -210,11 +210,11 @@
         </div>
     </section>
 
-    <button id="saveBooksBtn" class="btn btn-primary">Сохранить книги</button>
+    <button style="width: 250px" id="saveBooksBtn" class="btn btn-primary">Сохранить книги</button>
 
     <div style="height: 30px;"></div>
 
-    <button id="showBooksBtn" class="btn btn-primary">Показать сохраненные книги</button>
+    <button style="width: 250px" id="showBooksBtn" class="btn btn-primary">Показать сохраненные книги</button>
 
     <div style="height: 30px;"></div>
 
