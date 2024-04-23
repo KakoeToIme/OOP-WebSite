@@ -9,10 +9,9 @@ document.getElementById('saveBooksBtn').addEventListener('click', function() {
             return response.json();
         })
         .then(data => {
-            const books = data; // Записываем данные в массив books
+            const books = data;
             console.log('Загруженные книги:', books);
 
-            // Здесь вы можете вызвать функцию для сохранения данных на сервере
             saveBooks(books);
         })
         .catch(error => {
