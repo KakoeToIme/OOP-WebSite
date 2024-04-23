@@ -1,16 +1,4 @@
 console.log("Script is loaded");
-document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.btn-primary');
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function (event) {
-            event.preventDefault();
-            
-            const bookId = button.getAttribute('data-id');
-            showBookDetails(bookId);
-        });
-    });
-});
 
 document.getElementById('saveBooksBtn').addEventListener('click', function() {
     fetch('books.json')
@@ -32,9 +20,24 @@ document.getElementById('saveBooksBtn').addEventListener('click', function() {
         });
 });
 
+document.getElementById('showBooksBtn').addEventListener('click', function() {
+    fetch('getBooks', {
+        method: 'GET'
+    })
+        .then(response => response.json())
+        .then(data => {
+            localStorage.setItem('storedBooks', JSON.stringify(data));
+            window.location.href = 'JSONTable.jsp';
+        })
+        .catch(error => {
+            console.error('Ошибка при получении данных:', error);
+        });
+});
+
+
 function loadBooks() {
     console.log("Loading books...");
-    return fetch('/OOP-Website-1.0-SNAPSHOT/books.json')
+    return fetch('/OOP-Website-1.0-SNAPSHOT/bookServer.json')
         .then(response => response.json())
         .catch(error => {
             console.error('Ошибка загрузки данных:', error);
@@ -93,5 +96,3 @@ function saveBooks(data) {
         .then(message => console.log(message))
         .catch(error => console.error('Error saving data:', error));
 }
-
-
