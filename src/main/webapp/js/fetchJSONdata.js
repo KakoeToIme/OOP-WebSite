@@ -33,6 +33,10 @@ document.getElementById('showBooksBtn').addEventListener('click', function() {
         });
 });
 
+document.getElementById('addBooksBtn').addEventListener('click', function() {
+    window.location.href = 'AddBookForm.jsp';
+});
+
 
 function loadBooks() {
     console.log("Loading books...");
