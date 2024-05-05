@@ -164,7 +164,7 @@
             });
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:8081/OOP_Website_war_exploded/addbook', true); // изменено на true для асинхронного режима
+            xhr.open('POST', 'http://localhost:8081/OOP_Website_war_exploded/addbook', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
 
             xhr.onload = function () {

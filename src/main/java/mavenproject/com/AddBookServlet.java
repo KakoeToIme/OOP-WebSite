@@ -13,7 +13,7 @@ import java.io.*;
 @WebServlet("/addbook")
 public class AddBookServlet extends HttpServlet {
 
-    private static final String FILE_PATH = "C:\\Users\\User\\IdeaProjects\\OOP-Website\\src\\main\\webapp\\books.json";
+    private static final String FILE_PATH = "C:\\Users\\User\\IdeaProjects\\OOP-Website\\target\\OOP-Website-1.0-SNAPSHOT\\books.json";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -41,17 +41,13 @@ public class AddBookServlet extends HttpServlet {
             return;
         }
 
-        // Преобразование JSON-строки в JSONObject
         JSONObject newBookJson = new JSONObject(jsonRequest.toString());
 
-        // Добавление нового студента в список
         JSONArray booksJsonArray = new JSONArray(readBooksFromFile());
         booksJsonArray.put(newBookJson);
 
-        // Запись обновленного списка студентов в файл
         writeBooksToFile(booksJsonArray.toString());
 
-        // Отправка обновленного списка студентов
         response.getWriter().write(booksJsonArray.toString());
     }
 

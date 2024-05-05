@@ -40,7 +40,7 @@ document.getElementById('addBooksBtn').addEventListener('click', function() {
 
 function loadBooks() {
     console.log("Loading books...");
-    return fetch('/OOP-Website-1.0-SNAPSHOT/bookServer.json')
+    return fetch('/OOP_Website_war_exploded/bookServer.json')
         .then(response => response.json())
         .catch(error => {
             console.error('Ошибка загрузки данных:', error);
