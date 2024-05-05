@@ -9,79 +9,71 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
-import java.util.stream.Collectors;
 
 @WebServlet("/addbook")
 public class AddBookServlet extends HttpServlet {
 
-    private static final String JSON_FILE_PATH = "C:\\Users\\User\\IdeaProjects\\OOP-Website\\src\\main\\webapp\\books.json"; // Укажите абсолютный путь к файлу JSON
+    private static final String FILE_PATH = "C:\\Users\\User\\IdeaProjects\\OOP-Website\\src\\main\\webapp\\books.json";
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        String booksJson = readBooksFromFile();
+        response.getWriter().write(booksJson);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/plain");
+        response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        try {
-            // Получаем данные о книге из параметров запроса
-            String bookTitle = request.getParameter("bookTitle");
-            String author = request.getParameter("author");
-            int pageCount = Integer.parseInt(request.getParameter("pageCount"));
-            String publisher = request.getParameter("publisher");
-            int id = Integer.parseInt(request.getParameter("id"));
-            String isbn = request.getParameter("isbn");
-            int publicationYear = Integer.parseInt(request.getParameter("publicationYear"));
-            String imageURL = request.getParameter("imageURL");
-            String urlPattern = request.getParameter("urlPattern");
-            String description = request.getParameter("description");
-
-            // Создаем объект JSON для новой книги
-            JSONObject newBook = new JSONObject();
-            newBook.put("bookTitle", bookTitle);
-            newBook.put("author", author);
-            newBook.put("pageCount", pageCount);
-            newBook.put("publisher", publisher);
-            newBook.put("id", id);
-            newBook.put("isbn", isbn);
-            newBook.put("publicationYear", publicationYear);
-            newBook.put("imageURL", imageURL);
-            newBook.put("urlPattern", urlPattern);
-            newBook.put("description", description);
-
-            // Читаем существующие книги из файла JSON
-            JSONArray jsonArray;
-            File file = new File(JSON_FILE_PATH);
-            if (file.exists()) {
-                String jsonString = readJsonFileToString();
-                jsonArray = new JSONArray(jsonString);
-            } else {
-                jsonArray = new JSONArray();
+        StringBuilder jsonRequest = new StringBuilder();
+        String line;
+        try (BufferedReader reader = request.getReader()) {
+            while ((line = reader.readLine()) != null) {
+                jsonRequest.append(line);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Ошибка при чтении запроса");
+            return;
+        }
 
-            // Добавляем новую книгу в массив книг
-            jsonArray.put(newBook);
+        // Преобразование JSON-строки в JSONObject
+        JSONObject newBookJson = new JSONObject(jsonRequest.toString());
 
-            // Записываем обновленный массив книг обратно в JSON-файл
-            writeJsonStringToFile(jsonArray.toString());
+        // Добавление нового студента в список
+        JSONArray booksJsonArray = new JSONArray(readBooksFromFile());
+        booksJsonArray.put(newBookJson);
 
-            // Отправляем ответ об успешном добавлении книги
-            response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().println("Book added successfully.");
-        } catch (Exception e) {
-            // В случае ошибки отправляем соответствующий ответ
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            response.getWriter().println("Error adding book: " + e.getMessage());
+        // Запись обновленного списка студентов в файл
+        writeBooksToFile(booksJsonArray.toString());
+
+        // Отправка обновленного списка студентов
+        response.getWriter().write(booksJsonArray.toString());
+    }
+
+    private String readBooksFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+            return stringBuilder.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "[]";
         }
     }
 
-    private String readJsonFileToString() throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(JSON_FILE_PATH))) {
-            return reader.lines().collect(Collectors.joining("\n"));
-        }
-    }
-
-    private void writeJsonStringToFile(String jsonString) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(JSON_FILE_PATH))) {
-            writer.write(jsonString);
+    private void writeBooksToFile(String booksJson) {
+        try (FileWriter fileWriter = new FileWriter(FILE_PATH)) {
+            fileWriter.write(booksJson);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

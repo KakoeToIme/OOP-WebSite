@@ -151,48 +151,33 @@
 </footer>
 
 <script>
-    console.log("Script is loaded");
-
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('addBookForm');
 
-        if (form) { // Проверка наличия элемента формы
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-                const formData = new FormData(form);
-                const book = {};
-                formData.forEach(function (value, key) {
-                    book[key] = value;
-                });
-
-                console.log('Book data from form:', book);
-
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', 'http://localhost:8081/OOP-Website-1.0-SNAPSHOT/addbook', true);
-                xhr.setRequestHeader('Content-Type', 'application/json');
-
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        const response = JSON.parse(xhr.responseText);
-                        // Обработка успешного ответа
-                        console.log('Book added successfully:', response);
-                    } else {
-                        console.error('Произошла ошибка при обработке запроса:', xhr.statusText);
-                    }
-                };
-
-                xhr.onerror = function () {
-                    console.error('Произошла ошибка сети');
-                };
-
-                xhr.send(JSON.stringify(book));
+            const formData = new FormData(form);
+            const book = {};
+            formData.forEach(function (value, key) {
+                book[key] = value;
             });
-        } else {
-            console.error('Form element not found');
-        }
-    });
 
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:8081/OOP_Website_war_exploded/addbook', true); // изменено на true для асинхронного режима
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log('Все прошло успешно');
+                } else {
+                    console.error('Произошла ошибка при обработке запроса:', xhr.statusText);
+                }
+            };
+
+            xhr.send(JSON.stringify(book));
+        });
+    });
 </script>
 </body>
 </html>
