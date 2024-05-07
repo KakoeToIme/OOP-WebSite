@@ -33,6 +33,20 @@ document.getElementById('showBooksBtn').addEventListener('click', function() {
         });
 });
 
+document.getElementById('showBooksFromBdBtn').addEventListener('click', function() {
+    fetch('addbookbd', {
+        method: 'GET'
+    })
+        .then(response => response.json())
+        .then(data => {
+            localStorage.setItem('storedBooks', JSON.stringify(data));
+            window.location.href = 'ShowBooksFromBd.jsp';
+        })
+        .catch(error => {
+            console.error('Ошибка при получении данных:', error);
+        });
+});
+
 document.getElementById('addBooksBtn').addEventListener('click', function() {
     window.location.href = 'AddBookForm.jsp';
 });
@@ -41,6 +55,21 @@ document.getElementById('addBooksBtnMVC').addEventListener('click', function() {
     window.location.href = 'AddBookFormMVC.jsp';
 });
 
+document.getElementById('addBooksToBdBtn').addEventListener('click', function() {
+    window.location.href = 'AddBookToDb.jsp';
+});
+
+document.getElementById('showBooksFromBdBtn').addEventListener('click', function() {
+    window.location.href = 'ShowBooksFromBd.jsp';
+});
+
+document.getElementById('updateBookInBdBtn').addEventListener('click', function() {
+    window.location.href = 'UpdateBookInBd.jsp';
+});
+
+document.getElementById('deleteBookFromBdBtn').addEventListener('click', function() {
+    window.location.href = 'DeleteBookFromBd.jsp';
+});
 
 function loadBooks() {
     console.log("Loading books...");

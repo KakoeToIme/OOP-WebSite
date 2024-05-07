@@ -15,8 +15,6 @@ public class Book implements Serializable {
     private int id;
     private String isbn;
     private int publicationYear;
-    private String imageurl;
-    private String urlpattern;
     private String description;
 
     @Override
