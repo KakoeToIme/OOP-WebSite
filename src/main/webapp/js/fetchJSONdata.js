@@ -37,6 +37,10 @@ document.getElementById('addBooksBtn').addEventListener('click', function() {
     window.location.href = 'AddBookForm.jsp';
 });
 
+document.getElementById('addBooksBtnMVC').addEventListener('click', function() {
+    window.location.href = 'AddBookFormMVC.jsp';
+});
+
 
 function loadBooks() {
     console.log("Loading books...");
@@ -49,15 +53,15 @@ function loadBooks() {
 
 function showBookDetails(bookId) {
     loadBooks().then(data => {
-        
+
         if (!data || data.length === 0) {
             console.error('Книги не загружены или список книг пуст');
             return;
         }
 
         const book = data.find(book => book.id === bookId);
-        
-        if (book) { 
+
+        if (book) {
             const container = document.querySelector('.container');
             container.innerHTML = `
                 <div class="row">

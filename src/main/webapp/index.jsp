@@ -222,6 +222,10 @@
 
     <div style="height: 30px;"></div>
 
+    <button style="width: 250px" id="addBooksBtnMVC" class="btn btn-primary">Добавить книгу MVC</button>
+
+    <div style="height: 30px;"></div>
+
     <footer class="bg-dark text-light py-4">
         <div class="container text-center">
             <p>&copy; 2024 Онлайн-библиотека для всех любителей ООП</p>
